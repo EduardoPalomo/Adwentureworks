@@ -34,3 +34,22 @@ dotnet ef
 The following example scaffolds all schemas and tables and puts the new files in the Models folder.
 
 dotnet ef dbcontext scaffold "Server=tcp:sqlserver.database.windows.net,1433;Initial Catalog=database;Persist Security Info=False;User ID=youruser;Password=yourpassword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+
+https://gavilan.blog/2018/04/28/asp-net-core-2-doing-scaffolding-with-dotnet-cli-aspnet-codegenerator/
+
+As we can see, we have many options, we can indicate the name of the controller, if it will use asynchronous methods, if it will not use views (useful for web api), the model, the context, in short, we have options to make the controller we need. Let’s see first a simple example. We will generate an api-style controller, without views, with write and read actions:
+
+dotnet aspnet-codegenerator controller -name ExampleController -actions -api            -outDir Controllers
+
+That should create a controller called ExampleController in the Controllers folder.
+
+Now let’s involve a model. We are going to generate a controller, which is not API style, without views, with writing and reading actions focused on a given model. In the case of the project we are working on, the model is called Person, and the data context is called ApplicationDbContext:
+
+dotnet aspnet-codegenerator controller -name PeopleController -actions -nv -m Person -dc ApplicationDbContext -outDir Controllers
+
+Of course, when you are scaffolding a Controller, you can generate all the views for the different viewTemplates (Create, List, Edit, etc.), you just don’t specify the -nv options. So for example, in the previous case, if you also would like to create the views, just do it like this:
+
+dotnet aspnet-codegenerator controller -name PeopleController -actions -m Person -dc ApplicationDbContext -outDir Controllers
+
+Please notice that all I did was to remove the -nv option. But let’s say that for some reason, you want to generate the views yourself. Let’s see how to scaffold Views.
