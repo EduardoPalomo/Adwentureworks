@@ -1,4 +1,4 @@
-# Adwentureworks
+# Adventureworks
 Command Usage – dotnet new mvc:
 1. “dotnet new mvc”
 The command creates a new “ASP.NET Core MVC Web Application”, the application contains basic boilerplate files and directory. The name of the project is not specified in the command, so by default, the name of the project will be taken from the name of the folder the command has been executed in. The command also restores the dependencies required by the web project. As the default language is C#, a C# ASP.NET MVC project will be created.
