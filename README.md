@@ -11,6 +11,26 @@ dotnet run
 
 Sample https://docs.microsoft.com/en-us/ef/core/cli/dotnet
 
-Scaffold Database First
+Installing the tools
+dotnet ef can be installed as either a global or local tool. Most developers prefer installing dotnet ef as a global tool using the following command:
+
+dotnet tool install --global dotnet-ef
+
+Before you can use the tools on a specific project, you'll need to add the Microsoft.EntityFrameworkCore.Design package to it.
+
+.NET CLI
+
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+Verify installation
+Run the following commands to verify that EF Core CLI tools are correctly installed:
+
+.NET CLI
+
+
+dotnet ef
+
+The following example scaffolds all schemas and tables and puts the new files in the Models folder.
 
 dotnet ef dbcontext scaffold "Server=tcp:sqlserver.database.windows.net,1433;Initial Catalog=database;Persist Security Info=False;User ID=youruser;Password=yourpassword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -o Models
