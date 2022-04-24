@@ -6,7 +6,8 @@
 trigger:
 - master
 
-pool: Default
+pool:
+   name: Default
 
 variables:
   solution: '**/*.sln'
